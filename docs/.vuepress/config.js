@@ -2,6 +2,7 @@ import { defineUserConfig } from 'vuepress'
 import { defaultTheme } from 'vuepress'
 import { blogPlugin } from "vuepress-plugin-blog2";
 import { commentPlugin } from "vuepress-plugin-comment2";
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 
 export default defineUserConfig({
   lang: 'zh-CN',
@@ -30,6 +31,9 @@ export default defineUserConfig({
       repoId: "MDEwOlJlcG9zaXRvcnkxMTc4ODA5Nw==",
       category: "Announcements",
       categoryId: "DIC_kwDOALPfQc4CUss3",
+    }),
+    googleAnalyticsPlugin({
+      id: 'G-1BR5540B1H',
     }),
   ],
 })
