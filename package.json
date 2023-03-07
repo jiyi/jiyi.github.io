@@ -14,6 +14,8 @@
   "devDependencies": {
     "@vuepress/client": "2.0.0-beta.61",
     "vue": "^3.2.47",
-    "vuepress": "2.0.0-beta.61"
+    "vuepress": "2.0.0-beta.61",
+    "vuepress-plugin-blog2": "2.0.0-beta.189",
+    "vuepress-plugin-comment2": "2.0.0-beta.189"
   }
 }

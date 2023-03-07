@@ -1,3 +1,9 @@
+---
+lang: zh-CN
+title: VuePress部署
+description: VuePress部署遇到的问题
+---
+
 # Hello VuePress
 将vuepress部署在github上，项目初始化之后直接看文档的部署部分。
 
