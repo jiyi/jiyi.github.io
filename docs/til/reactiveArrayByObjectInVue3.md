@@ -9,7 +9,7 @@ description: vue3 reactive 数组，里面存储对象，如何对对象进行�
 ```javascript
 /**
  * 定义一个reactive数组
- * [{id, content}, {}, ...]
+ * [{id, content, created}, {}, ...]
  */
 const notes = reactive([])
 // 定义已选择的id
@@ -29,9 +29,11 @@ const selectedNote = computed(() =>
  * reactive 使用 push新增数据
  */
 const addNote = () => {
+    const time = Date.now()
     const note = {
-        id: String(Date.now()),
-        content: '内容'，
+        id: String(time),
+        content: '内容',
+        created: time
     }
     notes.push(note)
 }
@@ -48,5 +50,14 @@ const removeNote = () => {
         notes.splice(index, 1)
     }
 }
+
+/**
+ * 生成排序后的新数组，通过创建时间排序
+ * 使用 slice() 返回新数组，使用 sort 排序
+ */
+const sortedNotes = computed(() =>
+    notes.slice()
+        .sort((a, b) => a.created - b.created)
+)
 
 ```
