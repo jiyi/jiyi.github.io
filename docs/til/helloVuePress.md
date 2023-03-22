@@ -2,6 +2,7 @@
 lang: zh-CN
 title: VuePress部署
 description: VuePress部署遇到的问题
+comment: true
 ---
 
 # Hello VuePress
