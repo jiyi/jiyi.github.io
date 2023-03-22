@@ -1,3 +1,7 @@
+---
+comment: false
+---
+
 # Today I learn
 [vuepress 部署](./helloVuePress.md)
 
