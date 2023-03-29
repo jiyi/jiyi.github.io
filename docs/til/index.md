@@ -10,3 +10,5 @@ comment: false
 [自用archlinux装机指南](./reinstallArchlinux.md)
 
 [podman 踩坑](./podman-compose.md)
+
+[spring boot 管理依赖](./spring-boot-parent.md)
