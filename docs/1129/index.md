@@ -55,3 +55,52 @@ public class JwtGenerator {
 }
 
 ```
+
+# getRequest
+```java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public class GetRequestWithToken {
+
+    public static void main(String[] args) {
+        String token = "YOUR_GENERATED_TOKEN_HERE"; // 替换为您生成的 token
+        String apiUrl = "http://140.249.205.170:32001/console/api/system/cscpCurrentUserDetails";
+
+        try {
+            URL url = new URL(apiUrl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+
+            // 设置 Authorization 头部
+            conn.setRequestProperty("Authorization", "Bearer " + token);
+
+            // 发起请求
+            int responseCode = conn.getResponseCode();
+
+            // 读取响应
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                String inputLine;
+                StringBuilder response = new StringBuilder();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                // 打印获取的信息
+                System.out.println("Response: " + response.toString());
+            } else {
+                System.out.println("GET request failed. Response Code: " + responseCode);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
