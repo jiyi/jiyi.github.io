@@ -104,3 +104,102 @@ public class GetRequestWithToken {
     }
 }
 ```
+# 北向
+```java
+import com.alibaba.fastjson.JSON;
+import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import org.apache.rocketmq.common.message.Message;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+// 仅供演示，需要导入相关依赖，如 RocketMQ 的 Java 客户端依赖和数据库驱动等
+
+public class MessageHandler {
+
+    // 模拟接收北向接口推送的消息
+    public static void receiveNorthboundMessage(String jsonMessage) {
+        // 解析收到的 JSON 消息
+        AlarmMessage alarmMessage = JSON.parseObject(jsonMessage, AlarmMessage.class);
+
+        // 存储消息到 RocketMQ
+        storeMessageInRocketMQ(jsonMessage);
+
+        // 存储消息内容到数据库告警表
+        saveMessageToDatabase(alarmMessage);
+
+        // 调用南向短信网关接口，发送短信给指定用户
+        sendSMSViaGateway(alarmMessage);
+    }
+
+    // 将消息存储到 RocketMQ
+    private static void storeMessageInRocketMQ(String message) {
+        try {
+            DefaultMQProducer producer = new DefaultMQProducer("producer_group_name");
+            producer.start();
+
+            Message mqMessage = new Message("topic_name", "tag", message.getBytes());
+            producer.send(mqMessage);
+
+            producer.shutdown();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 将消息内容存入数据库告警表
+    private static void saveMessageToDatabase(AlarmMessage alarmMessage) {
+        try {
+            // 假设数据库连接信息
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_name", "username", "password");
+
+            String query = "INSERT INTO alarm_table (deviceNum, deviceName, deviceAddress, alarmType) VALUES (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, alarmMessage.getDeviceNum());
+            preparedStatement.setString(2, alarmMessage.getDeviceName());
+            preparedStatement.setString(3, alarmMessage.getDeviceAddress());
+            preparedStatement.setString(4, alarmMessage.getAlarmType());
+
+            preparedStatement.executeUpdate();
+
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 调用南向短信网关接口发送短信给指定用户
+    private static void sendSMSViaGateway(AlarmMessage alarmMessage) {
+        // 实现调用南向短信网关接口发送短信的逻辑
+        // 省略具体实现
+        System.out.println("Sending SMS to specified user: " + alarmMessage);
+    }
+
+    // 示例告警消息类
+    static class AlarmMessage {
+        private String deviceNum;
+        private String deviceName;
+        private String deviceAddress;
+        private String alarmType;
+
+        // 省略构造函数、getter 和 setter 方法
+        // 注意：需要提供相应的构造函数和方法来获取设备信息
+    }
+
+    // 测试方法
+    public static void main(String[] args) {
+        // 模拟接收到的北向接口推送的 JSON 消息
+        String jsonMessage = "{\n" +
+                "    \"deviceNum\": \"37140002031320000495\",\n" +
+                "    \"deviceName\":\"视频监控设备\",\n" +
+                "    \"deviceAddress\":\"济南市高新区\",\n" +
+                "    \"alarmType\": \"运动检测告警\"\n" +
+                "}";
+
+        // 处理收到的消息
+        receiveNorthboundMessage(jsonMessage);
+    }
+}
+```
