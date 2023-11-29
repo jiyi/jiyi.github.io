@@ -203,3 +203,66 @@ public class MessageHandler {
     }
 }
 ```
+# 短信
+```java
+import com.alibaba.fastjson.JSONObject;
+import okhttp3.*;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class SMSHandler {
+
+    public static void sendSMS(String appKey, String appSecret, String reportUrl, String alarmDeviceName,
+                               String alarmLocation, String alarmContent) {
+
+        // 构建短信内容
+        String currentTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        String smsContent = "&#8203;``【oaicite:0】``&#8203;" + currentTime + " " + alarmDeviceName +
+                " " + alarmLocation + " " + alarmContent;
+
+        // 构建短信请求参数
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("appKey", appKey);
+        requestBody.put("appSecret", appSecret);
+        requestBody.put("businesstype", "001");
+        requestBody.put("content", smsContent);
+
+        // 发送短信请求
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = RequestBody.create(MediaType.parse("application/json"), requestBody.toJSONString());
+        Request request = new Request.Builder()
+                .url(reportUrl)
+                .post(body)
+                .build();
+
+        try {
+            Response response = client.newCall(request).execute();
+            if (response.isSuccessful()) {
+                System.out.println("SMS sent successfully.");
+            } else {
+                System.out.println("Failed to send SMS. Response code: " + response.code());
+            }
+        } catch (IOException e) {
+            System.out.println("Exception occurred while sending SMS: " + e.getMessage());
+        }
+    }
+
+    // 示例测试方法
+    public static void main(String[] args) {
+        // 假设收到的告警信息
+        String alarmDeviceName = "视频监控设备";
+        String alarmLocation = "济南市高新区";
+        String alarmContent = "运动检测告警";
+
+        // 假设提供的短信参数
+        String appKey = "105044";
+        String appSecret = "bdf46abfa1797c0e";
+        String reportUrl = "http://182.92.7.106:7892";
+
+        // 发送短信
+        sendSMS(appKey, appSecret, reportUrl, alarmDeviceName, alarmLocation, alarmContent);
+    }
+}
+```
