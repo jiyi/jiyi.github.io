@@ -11,3 +11,47 @@ JOIN cscp_role_menu rm ON ur.role_id = rm.role_id
 JOIN cscp_menus cm ON rm.menu_id = cm.menu_id
 WHERE u.username = 'kao1';
 ```
+
+# jwt
+```java
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
+import java.util.Date;
+
+public class JwtGenerator {
+
+    public static void main(String[] args) {
+
+        // 设置载荷/Payload
+        String subject = "test";
+        String authorities = "42AD697D,7173EC98,D961DC2A,F1D0F803,cscp.authority,cscp.form.query,cscp.logging.operation,cscp.org.edit,cscp.org.query,cscp.quanxian,cscp.report.view,cscp.role,cscp.role.add,cscp.role.del,cscp.role.edit,cscp.sr,cscp.user.add,cscp.user.del,cscp.user.edit,cscp.user.query,cscp.workbench";
+        int rem = 1;
+        long id = 77;
+        String tenantId = "demo";
+        String ip = "10.0.0.1";
+        String issuedAt = "2022-01-02 16:51:26";
+        Date expiration = new Date(System.currentTimeMillis() + 30 * 24 * 60 * 60 * 1000); // 一个月后过期
+
+        // 设置签名密钥
+        String secretKey = "AqU3nspkcZ";
+
+        // 生成JWT token
+        String token = Jwts.builder()
+                .setSubject(subject)
+                .claim("auth", authorities)
+                .claim("rem", rem)
+                .claim("id", id)
+                .claim("tenantId", tenantId)
+                .claim("ip", ip)
+                .claim("issuedAt", issuedAt)
+                .setExpiration(expiration)
+                .signWith(SignatureAlgorithm.HS512, secretKey.getBytes())
+                .compact();
+
+        // 打印生成的token
+        System.out.println(token);
+    }
+}
+
+```
