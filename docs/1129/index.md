@@ -266,3 +266,101 @@ public class SMSHandler {
     }
 }
 ```
+
+# 前端
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tree Structure</title>
+  <script>
+    // Sample data provided
+    const treeData = {
+      "success": true,
+      "msg": "操作成功!",
+      "code": "0",
+      "data": {
+        "data": [
+          // Data objects here...
+        ]
+      }
+    };
+
+    // Function to render tree nodes
+    function renderTree(data) {
+      const treeContainer = document.getElementById('tree');
+      treeContainer.innerHTML = ''; // Clear existing content
+
+      function createNodeElement(node) {
+        const li = document.createElement('li');
+        li.textContent = node.gridName;
+        li.dataset.id = node.id;
+        li.addEventListener('click', () => {
+          console.log(`Clicked Node ID: ${node.id}`);
+          // Add your logic here to handle node click event if needed
+        });
+
+        if (node.children && node.children.length > 0) {
+          const ul = document.createElement('ul');
+          node.children.forEach(childNode => {
+            const childLi = createNodeElement(childNode);
+            ul.appendChild(childLi);
+          });
+          li.appendChild(ul);
+        }
+
+        return li;
+      }
+
+      const treeRoot = document.createElement('ul');
+      data.forEach(node => {
+        if (!node.parentId) {
+          const nodeElement = createNodeElement(node);
+          treeRoot.appendChild(nodeElement);
+        }
+      });
+      treeContainer.appendChild(treeRoot);
+    }
+
+    // Function to add a new node
+    function addTreeNode(parentId, newNodeName) {
+      const newNode = {
+        id: Date.now().toString(), // Generate a unique ID (You might need to adjust this logic)
+        parentId: parentId,
+        gridName: newNodeName
+      };
+
+      // Add the new node to the data
+      treeData.data.data.push(newNode);
+
+      // Re-render the tree structure
+      renderTree(treeData.data.data);
+    }
+
+    // Function to delete a node
+    function deleteTreeNode(nodeId) {
+      // Find the index of the node with given ID in the tree data
+      const nodeIndex = treeData.data.data.findIndex(node => node.id === nodeId);
+
+      if (nodeIndex > -1) {
+        // Remove the node from the data
+        treeData.data.data.splice(nodeIndex, 1);
+
+        // Re-render the tree structure
+        renderTree(treeData.data.data);
+      }
+    }
+
+    // Initial render
+    window.onload = function () {
+      renderTree(treeData.data.data);
+    };
+  </script>
+</head>
+<body>
+  <h1>Tree Structure</h1>
+  <ul id="tree"></ul>
+</body>
+</html>
+
+```
