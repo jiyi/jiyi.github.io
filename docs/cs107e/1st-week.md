@@ -11,7 +11,9 @@ description: CS107E 第一周都做了什么
 基于个人习惯，用虚拟机装ubuntu搞实验环境
 - 虚拟机安装 Ubuntu 22.04 server
 - [安装编译环境](https://cs107e.github.io/guides/install/devtools-wsl/)
+  - 只看 `Install riscv-unknown-elf toolchain`部分
 - [安装xfel](https://xboot.org/xfel/#/)
+  - 编译安装xfel到Ubuntu中
 
 ## 学东西
 第一周是汇编和riscv，官方讲义过于简略了。去B站看[循序渐进，学习开发一个RISC-V上的操作系统 - 汪辰 - 2021春](https://www.bilibili.com/video/BV1Q5411w7z5)
