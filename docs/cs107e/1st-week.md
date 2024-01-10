@@ -57,6 +57,10 @@ description: CS107E 第一周都做了什么
     cd $CS107E/sample_build
     make
     # 没报错就是第6步安装正常
+
+    cd $CS107E/bin
+    mango-run blink-actled.bin
+    # 芒果派led开始闪，说明第7步安装正常
     ```
 
 ## 学东西
