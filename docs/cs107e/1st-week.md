@@ -6,7 +6,7 @@ description: CS107E 第一周都做了什么
 
 # CS107E 第一周
 ## 装东西
-给的指导教程里面，macos arm版的支持度比其他要好一点，主要体现在一开始没有intel版的编译工具（现在有了），wsl版的编译工具编译`sample_build`代码不成功（现在可以了），wsl版没有`riscv64-unknown-elf-gdb`（暂时）。毕竟这个课第一次用riscv教学。
+给的指导教程里面，macos arm版的支持度比其他要好一点，主要体现在一开始没有intel版的编译工具（现在有了），wsl版的编译工具编译`sample_build`代码不成功（现在可以了），wsl版没有`riscv64-unknown-elf-gdb`（文档更新暂时不需要gdb了）。毕竟这个课第一次用riscv教学。
 
 ~~基于个人习惯，用虚拟机装ubuntu搞实验环境~~
 - ~~虚拟机安装 Ubuntu 22.04 server~~
