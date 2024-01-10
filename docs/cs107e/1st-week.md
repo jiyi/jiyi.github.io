@@ -8,12 +8,56 @@ description: CS107E 第一周都做了什么
 ## 装东西
 给的指导教程里面，macos arm版的支持度比其他要好一点，主要体现在一开始没有intel版的编译工具（现在有了），wsl版的编译工具编译`sample_build`代码不成功（现在可以了），wsl版没有`riscv64-unknown-elf-gdb`（暂时）。毕竟这个课第一次用riscv教学。
 
-基于个人习惯，用虚拟机装ubuntu搞实验环境
-- 虚拟机安装 Ubuntu 22.04 server
-- [安装编译环境](https://cs107e.github.io/guides/install/devtools-wsl/)
-  - 只看 `Install riscv-unknown-elf toolchain`部分
-- [安装xfel](https://xboot.org/xfel/#/)
-  - 编译安装xfel到Ubuntu中
+~~基于个人习惯，用虚拟机装ubuntu搞实验环境~~
+- ~~虚拟机安装 Ubuntu 22.04 server~~
+- ~~[安装编译环境](https://cs107e.github.io/guides/install/devtools-wsl/)~~
+  - ~~只看 `Install riscv-unknown-elf toolchain`部分~~
+- ~~[安装xfel](https://xboot.org/xfel/#/)~~
+  - ~~编译安装xfel到Ubuntu中~~
+
+> 发现教程里面的riscv安装包用的是Debian 12.2 的，那我直接虚拟机安装 Debian 就好了嘛
+
+### 搭建 Debian 12.2 虚拟机实验环境
+1. 下载[镜像](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.4.0-amd64-netinst.iso)
+2. 安装Debian，安装 `SSH server` 和 `standard system utilties`，不安装桌面
+3. 进入系统安装必要包
+    ```bash
+    apt install sudo vim git
+    ```
+4. 安装虚拟机工具，顺便安装了gcc, make, linux-header等东西
+5. 用户加入到sudo组里面
+    ```bash
+    usermod -a -G sudo jiyi
+    ```
+6. 安装交叉编译工具
+    ```bash
+    sudo apt install gcc-riscv64-unknown-elf
+    ```
+7. [安装xfel](https://xboot.org/xfel/#/)
+    ```bash
+    git clone https://github.com/xboot/xfel.git
+    cd xfel
+    sudo apt install libusb-1.0-0-dev pkg-config
+    make
+    sudo make install
+    # 使用以下命令就能检测到插上OTG口芒果派
+    xfel version
+    ```
+8. cs107e环境
+    ```bash
+    mkdir ~/cs107e_home
+    cd ~/cs107e_home
+    git clone https://github.com/cs107e/cs107e.github.io.git
+    vim ~/.bashrc
+    # 添加以下两行
+    export CS107E=~/cs107e_home/cs107e.github.io/cs107e
+    export PATH=$PATH:$CS107E/bin
+
+    source ~/.bashrc
+    cd $CS107E/sample_build
+    make
+    # 没报错就是第6步安装正常
+    ```
 
 ## 学东西
 第一周是汇编和riscv，官方讲义过于简略了。去B站看[循序渐进，学习开发一个RISC-V上的操作系统 - 汪辰 - 2021春](https://www.bilibili.com/video/BV1Q5411w7z5)
