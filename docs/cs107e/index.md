@@ -9,3 +9,4 @@ comment: false
 
 # 番外
 [第一次使用芒果派 Mangopi MQ-Pro](./mangopi.md)
+[_Static_assert 在代码里是做什么用的](./static-assert.md)
