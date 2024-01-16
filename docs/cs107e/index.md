@@ -8,6 +8,8 @@ comment: false
 
 [CS107E 第一周](./1st-week.md)
 
+[lab1](./lab1.md)
+
 # 番外
 
 [第一次使用芒果派 Mangopi MQ-Pro](./mangopi.md)
