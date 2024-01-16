@@ -1,10 +1,10 @@
 ---
 lang: zh-CN
-title: lab1
+title: CS107E lab1
 description: lab1 里面的 button 实验
 ---
 
-# lab1 里的 "Add a button"
+# CS107E lab1 里的 "Add a button"
 
 - `lw` load word, 一个 word 长 32bit
 - `PC_DAT` 偏移地址 `0x0070`，长32位，用了前13位
