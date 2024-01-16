@@ -1,6 +1,8 @@
+---
 lang: zh-CN
 title: lab1
 description: lab1 里面的 button 实验
+---
 
 # lab1 里的 "Add a button"
 
