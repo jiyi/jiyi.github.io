@@ -1,7 +1,9 @@
 ---
-home: true
+# https://vitepress.dev/reference/default-theme-home-page
+layout: home
+
+hero:
+  name: "Jiyi's Blog"
+  text: "A VitePress Site"
 ---
 
-[今天学到了啥](./til/index.md)
-
-[CS107E](./cs107e/index.md)

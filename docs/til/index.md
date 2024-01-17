@@ -3,12 +3,13 @@ comment: false
 ---
 
 # Today I learn
-[vuepress 部署](./helloVuePress.md)
 
-[vue3 里面数组里对象的处理](./reactiveArrayByObjectInVue3.md)
+[vuepress 部署](./helloVuePress)
 
-[自用archlinux装机指南](./reinstallArchlinux.md)
+[vue3 里面数组里对象的处理](./reactiveArrayByObjectInVue3)
 
-[podman 踩坑](./podman-compose.md)
+[自用archlinux装机指南](./reinstallArchlinux)
 
-[spring boot 管理依赖](./spring-boot-parent.md)
+[podman 踩坑](./podman-compose)
+
+[spring boot 管理依赖](./spring-boot-parent)
