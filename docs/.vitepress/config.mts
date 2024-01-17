@@ -5,6 +5,9 @@ export default defineConfig({
   lang: 'zh-Hans',
   title: "Jiyi's Blog",
   description: "A VitePress Site",
+
+  lastUpdated: true,
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -83,8 +86,10 @@ export default defineConfig({
     lightModeSwitchTitle: '切换到浅色模式',
     darkModeSwitchTitle: '切换到深色模式',
 
-    sitemap: {
-      hostname: 'https://jiyi.dev',
-    }
-  }
+  },
+
+  sitemap: {
+    hostname: 'https://jiyi.dev',
+  },
+
 })
