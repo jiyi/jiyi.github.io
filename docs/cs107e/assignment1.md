@@ -68,6 +68,6 @@ https://cs107e.github.io/guides/ProgramYourGPIOPins.pdf
 
 跨区接地要重搭一根线
 
-### 结果
+## 结果
 
 ![assig1](../assets/assig1.gif)
