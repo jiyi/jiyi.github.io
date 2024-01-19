@@ -8,7 +8,9 @@ comment: false
 
 [CS107E 第一周](./1st-week)
 
-[lab1](./lab1)
+[Lab1](./lab1)
+
+[Assignment1](./assignment1.md)
 
 # 番外
 

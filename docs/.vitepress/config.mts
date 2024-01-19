@@ -44,6 +44,7 @@ export default defineConfig({
             { text: 'CS107E 换 RISC-V 了', link: 'cs107e-risc-v' },
             { text: 'CS107E 第一周', link: '1st-week' },
             { text: 'lab1', link: 'lab1' },
+            { text: 'Assignment1', link: 'assignment1' },
           ],
         },
         {

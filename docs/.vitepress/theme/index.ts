@@ -34,7 +34,7 @@ export default {
         category: 'General', // default: `General`
         categoryId: 'DIC_kwDOALPfQc4CUss4',
         mapping: 'pathname', // default: `pathname`
-        inputPosition: 'top', // default: `top`
+        inputPosition: 'bottom', // default: `top`
         lang: 'zh-CN', // default: `zh-CN`
         lightTheme: 'light', // default: `light`
         darkTheme: 'transparent_dark', // default: `transparent_dark`
