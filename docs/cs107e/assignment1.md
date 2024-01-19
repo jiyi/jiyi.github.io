@@ -71,3 +71,13 @@ https://cs107e.github.io/guides/ProgramYourGPIOPins.pdf
 ## 结果
 
 ![assig1](../assets/assig1.gif)
+
+等等……做错了，我线都拆了
+
+## 改`larson.s`
+
+- 加上右移指令 `SRLI`
+
+## 再一次结果
+
+懒得重连了
