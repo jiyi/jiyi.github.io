@@ -10,7 +10,9 @@ comment: false
 
 [Lab1](./lab1)
 
-[Assignment1](./assignment1.md)
+[Assignment1](./assignment1)
+
+[Lecture 1/19](./lecture-0119)
 
 # 番外
 

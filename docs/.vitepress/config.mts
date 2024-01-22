@@ -45,6 +45,7 @@ export default defineConfig({
             { text: 'CS107E 第一周', link: '1st-week' },
             { text: 'lab1', link: 'lab1' },
             { text: 'Assignment1', link: 'assignment1' },
+            { text: 'Lecture 1/19', link: 'lecture-0119'},
           ],
         },
         {
