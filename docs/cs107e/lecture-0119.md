@@ -111,3 +111,11 @@ description: cs107e 1月19日的课程
 - int 占 32 位
 - 见 https://gcc.gnu.org/onlinedocs/gcc-7.5.0/gcc/RISC-V-Options.html
 
+### -nostdlib
+
+- 告诉编译器不要使用标准库
+- 用于嵌入式系统或者在编写底层代码
+
+### -emain
+
+- 告诉编译器将main函数作为程序的入口点
