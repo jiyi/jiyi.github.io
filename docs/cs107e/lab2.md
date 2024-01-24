@@ -10,7 +10,7 @@ description: CS107E lab2
 
 ~~没有 `codegen.c` , 搞不了~~
 
-搞到了，诶嘿 https://gcc.godbolt.org/z/7YYczMjes
+搞到了旧版 https://gcc.godbolt.org/z/7YYczMjes
 
 ### %hi(global) 是什么？
 
