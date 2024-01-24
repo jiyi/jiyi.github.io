@@ -98,7 +98,7 @@ description: CS107E lab2
   - 因为 cptr 是 char * 类型，所以偏移量 10 * 1
   - sb , Store byte
   - cptr 存储的指针指向地址0，所以使用 10(zero)
-- `n = *(ptr + n);
+- `n = *(ptr + n);`
   - a5 存 n 的值
   - ptr 偏移 n，需要`地址 + 4 * n`，即 `a3 + a5 << 2`
   - a5 存从内存拿到的 n 的值
