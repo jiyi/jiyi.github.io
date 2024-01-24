@@ -43,10 +43,11 @@ export default defineConfig({
             { text: 'Index', link: 'index' },
             { text: 'CS107E 换 RISC-V 了', link: 'cs107e-risc-v' },
             { text: 'CS107E 第一周', link: '1st-week' },
-            { text: 'lab1', link: 'lab1' },
+            { text: 'lab 1', link: 'lab1' },
             { text: 'Assignment1', link: 'assignment1' },
             { text: 'Lecture 1/19', link: 'lecture-0119' },
             { text: 'Lecture 1/22', link: 'lecture-0122' },
+            { text: 'Lab 2', link: 'lab2' },
           ],
         },
         {

@@ -16,6 +16,8 @@ comment: false
 
 [Lecture 1/22](./lecture-0122)
 
+[Lab2](./lab2)
+
 # 番外
 
 [第一次使用芒果派 Mangopi MQ-Pro](./mangopi)
