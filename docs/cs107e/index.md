@@ -18,6 +18,8 @@ comment: false
 
 [Lab2](./lab2)
 
+[Assignment2](./assignment2)
+
 # 番外
 
 [第一次使用芒果派 Mangopi MQ-Pro](./mangopi)
