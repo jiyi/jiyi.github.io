@@ -148,6 +148,15 @@ description: CS107E lab2
     - CFG地址偏移量是 `(0xff & GPIO_PD18) / 8 * 4 + 0x90 = 0x98` 是 **PD_CFG2**
     - CFG 寄存器设置的值是 `0x1 << (((0xff & GPIO_PD18) % 8) * 4)= 0x100` 是 **PD18** 设置为 **output**
 
+```c
+void gpio_set_output(gpio_id_t pin) {
+    unsigned int base_address = 0x30 + (pin >> 8) * 0x30 + GPIO;
+    volatile unsigned int *CFG = (unsigned int *) ( ( 0xff & pin ) / 8 * 4 + base_address );
+    unsigned int offset = ((0xff & pin) % 8) * 4;
+    *CFG = (*CFG & ~(0xf << offset)) | (1 << offset);
+}
+```
+
 
 
 ## 实验4，显示数字的电路
