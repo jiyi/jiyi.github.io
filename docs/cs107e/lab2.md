@@ -157,8 +157,6 @@ void gpio_set_output(gpio_id_t pin) {
 }
 ```
 
-
-
 ## 实验4，显示数字的电路
 
 ### 先连一路看数字LED是否正正常
