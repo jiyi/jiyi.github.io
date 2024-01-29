@@ -20,6 +20,8 @@ comment: false
 
 [Assignment2](./assignment2)
 
+[Lecture 1/26](./lecture-0126)
+
 # 番外
 
 [第一次使用芒果派 Mangopi MQ-Pro](./mangopi)

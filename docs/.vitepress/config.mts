@@ -32,6 +32,7 @@ export default defineConfig({
             { text: '自用archlinux装机指', link: 'reinstallArchlinux' },
             { text: 'podman 踩坑', link: 'podman-compose' },
             { text: 'spring boot 管理依赖', link: 'spring-boot-parent' },
+            { text: 'Linux下坚果云界面空白', link: 'nutstore-empty'}
           ],
         },
       ],
@@ -49,6 +50,7 @@ export default defineConfig({
             { text: 'Lecture 1/22', link: 'lecture-0122' },
             { text: 'Lab 2', link: 'lab2' },
             { text: 'Assignment2', link: 'assignment2' },
+            { text: 'Lecture 1/26', link: 'lecture-0126' },
           ],
         },
         {

@@ -130,6 +130,26 @@ description: CS107E lab2
 - ~~头文件里有`assert.h`，但需要串口。暂时不能用~~
 - ~~没有 `testing` 文件夹搞不了~~
 
+
+
+芒果派ACT LED 连接的是 LCD_PWM，对应GPIO_PD18，见 https://mangopi.org/_media/mq-pro-sch-v12.pdf
+
+### 写个 gpio_set_output
+
+- GPIO offset 从 0x0030 开始，
+- PB 偏移量是 0x0030，PB到PC到PD 每次 多 0x30
+- CFG0 从 0x00 开始，DAT 是 CFG0 + 0x10
+- 课程代码 gpio_id 是 0xNnn 格式的
+  - 选择组是 `0x0030 + N * 0x30`
+  - 选择CFG 的地址偏移量是 `(nn / 8) * 4 + 上面地址`
+  - 设置CFG 的值`0x1 << ((nn % 8) * 4)`
+  - 例如 `GPIO_PD18 = 0x212`
+    - 组地址偏移量是 `0x0030 + (GPIO_PD18 >> 8) * 0x30 = 0x90`  是**PD**
+    - CFG地址偏移量是 `(0xff & GPIO_PD18) / 8 * 4 + 0x90 = 0x98` 是 **PD_CFG2**
+    - CFG 寄存器设置的值是 `0x1 << (((0xff & GPIO_PD18) % 8) * 4)= 0x100` 是 **PD18** 设置为 **output**
+
+
+
 ## 实验4，显示数字的电路
 
 ### 先连一路看数字LED是否正正常
