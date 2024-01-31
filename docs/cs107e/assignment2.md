@@ -97,7 +97,7 @@ void _cstart(void) {
 ```makefile
 NAME = clock
 
-ARCH = -march=rv64im -mabi=lp64
+ARCH = -march=rv64im_zicsr -mabi=lp64
 ASFLAGS = $(ARCH)
 CFLAGS = $(ARCH) -g -Og -I$$CS107E/include -Wall -ffreestanding
 LDFLAGS = -nostdlib -T memmap
@@ -122,7 +122,10 @@ clean:
 run: $(NAME).bin
 	mango-run $<
 
-.PHONY: all clean run
+test: test_gpio_timer.bin
+	mango-run $<
+
+.PHONY: all clean run test
 .PRECIOUS: %.elf %.o
 ```
 
@@ -137,8 +140,106 @@ run: $(NAME).bin
 
 ## timer_asm.s 和 timer.c 的实现
 
-1. `timer_get_ticks`
-2. 测试
+### 用汇编语言写个函数？
+
+- 函数名作为标签
+- a0, a1, 等作为参数
+- a0，作为返回值
+
+比如：
+
+```c
+int sum(int a, int b) {
+    return a + b;
+}
+```
+
+等同为
+
+```s
+sum:
+    add     a0,a0,a1
+    ret
+```
+
+### 怎么写？
+
+![image-20240131142644795](../assets/image-20240131142644795.png)
+
+看文档这意思只需要
+
+```s
+.section .text
+.globl timer_get_ticks
+
+timer_get_ticks:
+    csrr a0, time
+    ret
+```
+
+### .section 是做什么用的？
+
+- 用于定义代码所属的段
+  - 文本段（.text）用于存放程序的代码
+  - 数据段（.data）用于存放程序的数据
+  - bss段（.bss）用于存放未初始化的全局变量
+
+### .globl 是做什么用的？
+
+- 声明全局符号
+- 可以被其他文件或模块访问
+
+### c 文件呢
+
+```c
+void one_us() {
+  unsigned long star_ticks = timer_get_ticks();
+  while(1) {
+    unsigned long curr_ticks = timer_get_ticks();
+    if ((curr_ticks - star_ticks) >= TICKS_PER_USEC) {
+      break;
+    }
+  }
+}
+
+void timer_delay_us(int usec) {
+  for(int i = 0; i < usec; i++) {
+    one_us();
+  }
+}
+
+void timer_delay_ms(int msec) {
+  timer_delay_us(1000 * msec);
+}
+
+void timer_delay(int sec) {
+  timer_delay_ms(1000 * sec);
+}
+```
+
+### 运行起来怎么样？
+
+不行……时间误差20%
+
+### 为什么这么大误差？
+
+函数多次调用引起的延时？
+
+### 更改延时函数
+
+```c
+void one_us(int mul) {
+  unsigned long star_ticks = timer_get_ticks();
+  while(1) {
+    unsigned long curr_ticks = timer_get_ticks();
+    if ((curr_ticks - star_ticks) >= TICKS_PER_USEC * mul) {
+      break;
+    }
+  }
+}
+```
+
+可以用了
 
 ## 表
 
