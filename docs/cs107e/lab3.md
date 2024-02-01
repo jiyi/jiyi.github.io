@@ -9,7 +9,7 @@ description: CS107E lab3 Debugging and Testing，调测
 ## 没有`riscv-unknown-elf-gdb`
 
 ~~用 `gdb-multiarch`~~
-
+lab3 里有安装教程
 
 
 
