@@ -24,6 +24,8 @@ comment: false
 
 [Lecture 1/29](./lecture-0129)
 
+[Lab3 调试和测试](./lab3)
+
 # 番外
 
 [第一次使用芒果派 Mangopi MQ-Pro](./mangopi)
