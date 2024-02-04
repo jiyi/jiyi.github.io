@@ -83,7 +83,3 @@ description: cs107e 1月26日的课程
 10. `addi sp, sp, 16` 栈指针返回之前的位置，之前保存的ra和s0相当于删掉了
     ![image-20240129114614092](../assets/image-20240129114614092.png)
 11. `ret` 根据现在的 ra 地址跳回 f0
-
-
-## TODO
-gdb 操作
