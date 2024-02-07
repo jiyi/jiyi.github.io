@@ -9,8 +9,8 @@ description: cs107e 2月5日的课程，Memory Management
 ## **frame pointer** 是什么？
 
 - 是栈相关的概念
-- 栈指针 stack pointer 也就是 sp，指向栈顶
-- 帧指针 frame pointer 也就是 fp，指向栈底
+- 栈指针 stack pointer 也就是 sp，指向栈顶(栈中最低的地址)
+- 帧指针 frame pointer 也就是 fp，指向前一帧的最后一个地址
 
 > 1. 什么是frame pointer
 >
