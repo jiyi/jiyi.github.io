@@ -28,6 +28,8 @@ comment: false
 
 [Lecture 2/2](./lecture-0202.md)
 
+[Lecture 2/5](./lecture-0205.md)
+
 # 番外
 
 [第一次使用芒果派 Mangopi MQ-Pro](./mangopi)
