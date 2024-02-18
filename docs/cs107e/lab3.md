@@ -48,4 +48,31 @@ lab3 里有安装教程
 - `print $a1` 显示寄存器 a1 的值
 - ![image-20240208105731276](../assets/image-20240208105731276.png)
 
-##
+## cstring
+
+自己实现
+
+```c
+static char *strcpy(char *dst, const char *src)
+{
+    int i;
+    for (i = 0; src[i] != '\0'; i++) {
+      dst[i] = src[i];
+    }
+    dst[i] = '\0';
+    return dst;
+}
+```
+
+网上找的
+
+```c
+static char *strcpy(char *dst, const char *src)
+{
+    assert((dst != NULL) && (src != NULL));
+    char *tmp = dst;
+    while((*tmp++ = *src++) != '\0') {}
+    return dst;
+}
+```
+
