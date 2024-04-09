@@ -66,7 +66,17 @@ export default defineConfig({
             { text: 'uart.c 的代码', link: 'uart_c' },
           ]
         },
-      ]
+      ],
+      '/sicp/': [
+        {
+          text: 'SICP',
+          base: '/sicp/',
+          items: [
+            { text: 'Index', link: 'index' },
+            { text: '环境安装', link: 'install' },
+          ],
+        },
+      ],
     },
 
     editLink: {
