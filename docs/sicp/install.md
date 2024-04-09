@@ -110,7 +110,7 @@ emacs 打开一个scheme源文件，例如 `hello.scm`
 
 ### 运行源文件
 
-光标移动到"Hello World"处，输入快捷键 `C-c C-c`，就会看到Emacs最下面显示输出的内容。这条命令只会运行光标附近的命令。
+光标移动到"Hello World"处，输入快捷键 `C-c C-c`，就会看到Emacs最下面显示输出的内容。这条指令只会运行光标附近的源代码。
 
 在"Hello World"下面一行写一个函数
 
