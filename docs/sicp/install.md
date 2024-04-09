@@ -106,7 +106,7 @@ emacs 打开一个scheme源文件，例如 `hello.scm`
 
 使用 `M-x run-geiser` 或快捷键 `C-c C-z` 打开 REPL
 
-现在光标在`REPL`里面，可以再按一次 `C-c C-z` 让光标返回之前的编辑文件中，或者用鼠标，`C-c C-z` 让光标在scheme源文件和REPL中来回切换。
+现在光标在`REPL`里面，可以再按一次 `C-c C-z` 让光标返回之前的编辑文件中，`C-c C-z` 让光标在scheme源文件和REPL中来回切换。
 
 ### 运行源文件
 
