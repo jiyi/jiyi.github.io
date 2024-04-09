@@ -13,7 +13,10 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: 'TodayILearn', link: '/til/index', activeMatch: '/til/' },
-      { text: 'CS107E', link: '/cs107e/index', activeMatch: '/cs107e/'},
+      { text: '公开课', items: [
+        { text: 'CS107E', link: '/cs107e/index', activeMatch: '/cs107e/'},
+        { text: 'SICP', link: '/sicp/index', activeMatch: '/sicp/'},
+      ]},
     ],
 
     socialLinks: [
