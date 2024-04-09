@@ -22,7 +22,6 @@ emacs 配 lisp，犹如用手指挖鼻孔那么自然
 
 [参考][Setting up Emacs for SICP from Scratch]
 
-
 ## 安装流程
 
 ### 安装 mit-scheme
@@ -72,6 +71,7 @@ M-x package-install RET geiser-mit
 ### 配置文件
 
 如果Emacs没有其他配置，那么以上操作结束后配置如下
+
 ```lisp
 (require 'package)
 (setq package-archives '(("gnu" . "https://mirrors.ustc.edu.cn/elpa/gnu/")
@@ -92,7 +92,6 @@ M-x package-install RET geiser-mit
 
 (setq geiser-mit-binary "/usr/local/bin/scheme")
 (setq geiser-active-implementations '(mit))
-
 ```
 
 ## 使用，只需要两个快捷键
