@@ -23,7 +23,7 @@ emacs 配 lisp，犹如用手指挖鼻孔那么自然
 [参考][Setting up Emacs for SICP from Scratch]
 
 
-## 流程
+## 安装流程
 
 ### 安装 mit-scheme
 
