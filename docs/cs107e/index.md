@@ -26,9 +26,9 @@ comment: false
 
 [Lab3 调试和测试](./lab3)
 
-[Lecture 2/2](./lecture-0202.md)
+[Lecture 2/2](./lecture-0202)
 
-[Lecture 2/5](./lecture-0205.md)
+[Lecture 2/5](./lecture-0205)
 
 # 番外
 
