@@ -30,6 +30,8 @@ comment: false
 
 [Lecture 2/5](./lecture-0205)
 
+[期中复习](./mid-review)
+
 # 番外
 
 [第一次使用芒果派 Mangopi MQ-Pro](./mangopi)

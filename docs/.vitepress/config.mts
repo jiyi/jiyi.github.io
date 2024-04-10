@@ -58,6 +58,7 @@ export default defineConfig({
             { text: 'Lab 3 调试测试', link: 'lab3' },
             { text: 'Lecture 2/2 Modules, Libraries, and Linking', link: 'lecture-0202'},
             { text: 'Lecture 2/5 Memory Management', link: 'lecture-0205'},
+            { text: '期中复习', link: 'mid-review' },
           ],
         },
         {
