@@ -77,7 +77,7 @@ export default defineConfig({
           items: [
             { text: 'Index', link: 'index' },
             { text: '环境安装', link: 'install' },
-            { text: '第一章', link: 'section-1.1-1.2.2' },
+            { text: 'section-1.1-1.2.2', link: 'section-1.1-1.2.2' },
           ],
         },
       ],

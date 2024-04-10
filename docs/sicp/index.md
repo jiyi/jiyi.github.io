@@ -8,4 +8,4 @@ comment: false
 
 [环境安装](./install)
 
-[第一章](./section-1.1-1.2.2)
+[section-1.1-1.2.2](./section-1.1-1.2.2)
