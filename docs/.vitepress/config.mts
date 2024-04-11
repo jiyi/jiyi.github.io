@@ -79,6 +79,7 @@ export default defineConfig({
             { text: 'Index', link: 'index' },
             { text: '环境安装', link: 'install' },
             { text: 'section-1.1-1.2.2', link: 'section-1.1-1.2.2' },
+            { text: 'section-1.2.3', link: 'section-1.2.3' },
           ],
         },
       ],
