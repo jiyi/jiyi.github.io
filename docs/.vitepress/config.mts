@@ -44,7 +44,6 @@ export default defineConfig({
           text: 'CS107E',
           base: '/cs107e/',
           items: [
-            { text: 'Index', link: 'index' },
             { text: 'CS107E 换 RISC-V 了', link: 'cs107e-risc-v' },
             { text: 'CS107E 第一周', link: '1st-week' },
             { text: 'lab 1', link: 'lab1' },
@@ -76,7 +75,6 @@ export default defineConfig({
           text: 'SICP',
           base: '/sicp/',
           items: [
-            { text: 'Index', link: 'index' },
             { text: '环境安装', link: 'install' },
             { text: 'section-1.1-1.2.2', link: 'section-1.1-1.2.2' },
             { text: 'section-1.2.3', link: 'section-1.2.3' },
