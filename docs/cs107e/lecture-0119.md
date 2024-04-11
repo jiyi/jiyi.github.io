@@ -26,12 +26,12 @@ description: cs107e 1月19日的课程
 
 是伪指令，实际指令是 `jal zero, offset`
 
-### `jar rd, label`
+### `jal rd, label`
 
 - `rd` 存储顺序执行的指令地址，即当前 pc + 4
   - 用来恢复跳转前的指令状态
 - `label` 是 imm20
-- `imm20`，20bit，2^20^ , 长度为 `1M`
+- `imm20`，20bit，2<sup>20</sup> , 长度为 `1M`
 - 偏移地址的计算为 pc + (imm20 << 1)
   - 左移了一位，21bit 可以代表带符号的1M长度
   - 即跳转范围是`±1M`地址
