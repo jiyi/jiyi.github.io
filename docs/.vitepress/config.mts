@@ -29,7 +29,6 @@ export default defineConfig({
           text: 'Today I Learn',
           base: '/til/',
           items: [
-            { text: 'Index', link: 'index' },
             { text: 'vuepress 部署', link: 'helloVuePress' },
             { text: 'vue3 里面数组里对象的处理', link: 'reactiveArrayByObjectInVue3' },
             { text: '自用archlinux装机指', link: 'reinstallArchlinux' },
@@ -58,6 +57,7 @@ export default defineConfig({
             { text: 'Lecture 2/2 Modules, Libraries, and Linking', link: 'lecture-0202'},
             { text: 'Lecture 2/5 Memory Management', link: 'lecture-0205'},
             { text: '期中复习', link: 'mid-review' },
+            { text: 'Lecture C Pointers and Arrays', link: 'lecture_03_C_Pointers'}
           ],
         },
         {
