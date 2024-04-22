@@ -240,6 +240,12 @@ timer_get_ticks:
 
 - 声明全局符号
 - 可以被其他文件或模块访问
+- 在这里是实现了`timer.h`里面的`timer_get_ticks`函数
+
+### 24MHz 要多长时间才能把 unsigned long 类型的寄存器填满？
+
+- 是 64 bit 的寄存器
+- 2^64 / 24 / 1000 / 1000 / 3600 / 24 / 356 = 24988.761977364382 年
 
 ### c 文件呢
 
@@ -288,6 +294,10 @@ void one_us(int mul) {
       break;
     }
   }
+}
+
+void timer_delay_us(int usec) {
+  one_us(usec);
 }
 ```
 
