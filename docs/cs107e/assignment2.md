@@ -14,6 +14,9 @@ description: cs107e 里的家庭作业2
 
 先实现 `gpio.c`, `timer.c`, `timer_asm.s` 这些通用模块，然后实现 `clock.c` 这个作业程序。
 
+- `gpio.c` 的接口文件是 `$CS107E/include/gpio.h`
+- `timer.c` 的接口文件是 `$CS107E/include/timer.h`
+
 ## 抄准备文件
 
 文件来自 `$CS107E`
@@ -47,7 +50,7 @@ ASSERT(_start == ADDR(.text), "_start symbol must be placed first in text sectio
 
 ### start.s 抄 src/start.s
 
-删除 mango.h 相关的内容
+删除中断相关的代码
 
 ```s
 .attribute arch, "rv64im_zicsr"
@@ -61,6 +64,8 @@ _start:
 .cfi_undefined ra           # tell gdb this is start routine
 
     csrc    mstatus, 1<<3   # global disable interrupts, mstatus.mie = 0
+    # la      t0,_trap_handler #  _trap_handler 关键字来自 interrupts.c 用不到，注释掉
+    # csrw    mtvec,t0        # install trap handler
 .globl _start_gdb
 _start_gdb:                 # entry for gdb will skip csr as not avail in sim
     addi    fp,zero,0       # init fp
@@ -70,10 +75,6 @@ _start_gdb:                 # entry for gdb will skip csr as not avail in sim
 hang: j hang
     ret
 .cfi_endproc
-
-.align 8
-_trap_handler:
-    j _trap_handler        # if exception raised, hang
 ```
 
 ### cstart.c 抄 src/cstart.c
@@ -84,10 +85,7 @@ _trap_handler:
 extern void main(void);
 void _cstart(void);
 
-// The C function _cstart is called from the assembly in start.s
-// _cstart zeroes out the BSS section and then calls the main function
 void _cstart(void) {
-    extern char __bss_start, __bss_end;
     main();
 }
 ```
@@ -131,12 +129,66 @@ test: test_gpio_timer.bin
 
 ## gpio.c 的实现
 
+1. `gpio_init`
+    ```c
+    void gpio_init(void) {
+      return;
+    }
+    ```
+2. `gpio_id_is_valid`
+    ```c
+    bool gpio_id_is_valid(gpio_id_t pin) {
+        return (pin >= GPIO_PB0 && pin <= GPIO_PB0 + GPIO_PB_LAST_INDEX) ||
+              (pin >= GPIO_PC0 && pin <= GPIO_PC0 + GPIO_PC_LAST_INDEX) ||
+              (pin >= GPIO_PD0 && pin <= GPIO_PD0 + GPIO_PD_LAST_INDEX) ||
+              (pin >= GPIO_PE0 && pin <= GPIO_PE0 + GPIO_PE_LAST_INDEX) ||
+              (pin >= GPIO_PF0 && pin <= GPIO_PF0 + GPIO_PF_LAST_INDEX) ||
+              (pin >= GPIO_PG0 && pin <= GPIO_PG0 + GPIO_PG_LAST_INDEX);
+    }
+    ```
+3. `gpio_set_input`
+    ```c
+    void gpio_set_input(gpio_id_t pin) {
+        gpio_set_function(pin, GPIO_FN_INPUT);
+    }
+    ```
+4. `gpio_set_output`
+    ```c
+    void gpio_set_output(gpio_id_t pin) {
+        gpio_set_function(pin, GPIO_FN_OUTPUT);
+    }
+    ```
+5. `gpio_function_is_valid`
+    ```c
+    bool gpio_function_is_valid(unsigned int function) {
+        return function >= GPIO_FN_INPUT && function <= GPIO_FN_DISABLED;
+    }
+    ```
 1. `gpio_set_function`
+    - `void gpio_set_function(gpio_id_t pin, unsigned int function);`
+    - 验证 `pin` 和 `function` 在两个枚举值内
+    - 通过 `pin` 值获取实际地址，和对应地址寄存里的位置
+      - `pin`值是`0xNnn`格式的数字，由`N`值确定是哪个组，由`nn`确定是组内第几个
+      - `pin >> 8 == 0xN`
+      - `pin & 0xff == 0xnn`
+      - `0xN * (每个组占用的固定偏移量) + (GPIO 基准地址) == (组开始地址)`
+      - 每个CFG最多有3个32位寄存器，每个pin有其中4位决定设置值
+    - 将以上寄存里对应位置的值设置为 `function` 值
 2. `gpio_get_function`
-3. 测试
+    - `unsigned int gpio_get_function(gpio_id_t pin);`
+    - 验证 `pin`，验证不通过返回 `GPIO_INVALID_REQUEST`
+    - 和上步相同方式获取`pin`的实际地址与寄存器中的位置
+    - 获取寄存器中对应位置的值
 4. `gpio_write`
+    - `void gpio_write(gpio_id_t pin, int val);`
+    - 验证`pin`和`val`，`val`值只能是0或1
+    - 通过`pin`值获取`pin_dat`实际地址和对应寄存器里的位置
+    - 寄存器里的位置设置`val`
 5. `gpio_read`
-6. 测试
+    - `int gpio_read(gpio_id_t pin);`
+    - 验证`pin`
+    - 获取对应寄存器地址和位置
+    - 获取值
 
 ## timer_asm.s 和 timer.c 的实现
 

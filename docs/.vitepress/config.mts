@@ -50,7 +50,6 @@ export default defineConfig({
             { text: 'Lecture 1/19', link: 'lecture-0119' },
             { text: 'Lecture 1/22', link: 'lecture-0122' },
             { text: 'Lab 2', link: 'lab2' },
-            { text: 'Assignment2', link: 'assignment2' },
             { text: 'Lecture 1/26', link: 'lecture-0126' },
             { text: 'Lecture 1/29', link: 'lecture-0129' },
             { text: 'Lab 3 调试测试', link: 'lab3' },
@@ -59,6 +58,7 @@ export default defineConfig({
             { text: '期中复习', link: 'mid-review' },
             { text: 'Lecture C Pointers and Arrays', link: 'lecture_03_C_Pointers'},
             { text: 'Lecture C Functions', link: 'lecture_04_C_Functions'},
+            { text: 'Assignment2', link: 'assignment2' },
           ],
         },
         {
