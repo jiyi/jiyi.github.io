@@ -303,6 +303,58 @@ void timer_delay_us(int usec) {
 
 可以用了
 
-## 表
+## 测试显示
 
-- PG12 连接第二个按钮
+```c
+// 位对应的GPIO接口 D4, D3, D2, D1
+gpio_id_t digit[4] = { GPIO_PC0, GPIO_PB2, GPIO_PB3, GPIO_PB4 };
+
+// 块对应的GPIO接口，A, B, C, D, E, F, G, DP
+gpio_id_t segment[8] = { GPIO_PD17, GPIO_PB6, GPIO_PB12, GPIO_PB11, GPIO_PB10, GPIO_PE17, GPIO_PB0, GPIO_PD22};
+
+// 将一个数组里的gpio接口设置对应输出方式
+void list_gpio_set_function(gpio_id_t * list, int length, unsigned int function) {
+    for(int i = 0; i < length; i++) {
+        gpio_set_function(list[i], function);
+    }
+}
+
+// 写入gpio列表的到对应dat寄存器
+void list_gpio_write(gpio_id_t * list, int length, int data) {
+    for(int i = 0; i < length; i++) {
+        gpio_write(list[i], (data >> i) & 0x1 );
+    }
+}
+
+// 初始化，把数字位和数字块设置成输出
+void clock_init(void) {
+    list_gpio_set_function(digit, 4, GPIO_FN_OUTPUT);
+    list_gpio_set_function(segment, 8, GPIO_FN_OUTPUT);
+}
+
+// 测试数字位
+void test_breadboard(void) {
+    gpio_init();
+    timer_init();
+    clock_init();
+
+    int digit_postion = 0b1;
+    int segment_postion = 0b1;
+
+    while(1) {
+        while (digit_postion < 9) {
+            list_gpio_write(digit, 4, digit_postion);
+            while(segment_postion < 129) {
+                list_gpio_write(segment, 8, segment_postion);
+                segment_postion = segment_postion << 1;
+                delay();
+            }
+            segment_postion = 0b1;
+            digit_postion = digit_postion << 1;
+        }
+        digit_postion = 0b1;
+    }
+}
+```
+
+![cs107e-assign2-1](../assets/cs107e-assign2-1.gif)
