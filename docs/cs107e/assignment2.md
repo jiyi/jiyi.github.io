@@ -358,3 +358,7 @@ void test_breadboard(void) {
 ```
 
 ![cs107e-assign2-1](../assets/cs107e-assign2-1.gif)
+
+## 基本功能
+
+![cs107e-assign2-2](../assets/cs107e-assign2-2.gif)
