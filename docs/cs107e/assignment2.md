@@ -21,6 +21,10 @@ description: cs107e 里的家庭作业2
 
 文件来自 `$CS107E`
 
+> update: 直接看 https://github.com/cs107e/cs107e.github.io/tree/master/lectures/Linking/code/larson
+>
+> 这里代码该有的有，该没有的没有
+
 ### memmap 直接抄 lib/memmap.ld
 
 ```memmap
