@@ -60,6 +60,7 @@ export default defineConfig({
             { text: 'Lecture C Functions', link: 'lecture_04_C_Functions'},
             { text: 'Assignment2', link: 'assignment2' },
             { text: 'Lecture Serial', link: 'lecture_05_Serial' },
+            { text: 'Lecture Modules and Linking', link: 'lecture_06_Linking' },
           ],
         },
         {

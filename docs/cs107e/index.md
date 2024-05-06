@@ -13,3 +13,7 @@ comment: false
 ## 2024-04-20
 
 lab 2 codegen.c https://gcc.godbolt.org/z/7YYczMjes
+
+## 2024-04-23
+
+学汇编的阶段用`risc-v`比`arm`简单一些
