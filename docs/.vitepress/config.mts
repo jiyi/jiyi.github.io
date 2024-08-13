@@ -31,7 +31,7 @@ export default defineConfig({
           items: [
             { text: 'vuepress 部署', link: 'helloVuePress' },
             { text: 'vue3 里面数组里对象的处理', link: 'reactiveArrayByObjectInVue3' },
-            { text: '自用archlinux装机指', link: 'reinstallArchlinux' },
+            { text: '自用archlinux装机指南', link: 'reinstallArchlinux' },
             { text: 'podman 踩坑', link: 'podman-compose' },
             { text: 'spring boot 管理依赖', link: 'spring-boot-parent' },
             { text: 'Linux下坚果云界面空白', link: 'nutstore-empty'},
