@@ -69,31 +69,31 @@ sudo firewall-cmd --zone=trusted --add-interface=ztppiuwzbp
 sudo firewall-cmd --runtime-to-permanent
 ```
 
-### 学习中的问题
+## 学习中的问题
 
-#### 啥是zone？
+### 啥是zone？
 
 用来应用不同规则的区域，主要目的是区分规则的大类。特定的zone有特定的功能。
 
 学习中的主要困惑就是zone的概念，开始以为系统总体在一个zone里面，实际不然。实际是一个网卡绑定一个zone，所有active的zone都在使用。而以上网卡不止是物理上的网卡，也是虚拟网卡或vlan。所以可以把不同概念上的网段应用到不同zone中去，起到分区域管理的目的。
 
-#### 啥是public？
+### 啥是public？
 
 firewalld 的默认区域zone，没啥特别的。
 
-#### 啥是active？
+### 啥是active？
 
 已经激活的zone。在用zone都是激活的，有添加interface的zone都是激活的。
 
-#### default 的用处
+### default 的用处
 
 默认zone，firewalld 的默认是public，也可以改成别的zone。没有在别的zone里面的网卡或ip，都走这里面的规则。
 
-#### 和 docker 结合使用
+### 和 docker 结合使用
 
 firewalld 有个 docker zone，暂时不需要特别设置。同样的应用到虚拟机中。
 
-### 来源
+## 来源
 
 主要学习了这篇才算入了点门：
 https://www.xuliangwei.com/oldxu/1521.html
