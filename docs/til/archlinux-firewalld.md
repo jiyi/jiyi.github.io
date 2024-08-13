@@ -91,7 +91,7 @@ firewalld 的默认区域zone，没啥特别的。
 
 ### 和 docker 结合使用
 
-firewalld 有个 docker zone，暂时不需要特别设置。同样的应用到虚拟机中。
+firewalld 有个 docker zone，暂时不需要特别设置。同样概念在虚拟机上也适用。
 
 ## 来源
 
