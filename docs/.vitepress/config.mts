@@ -35,7 +35,8 @@ export default defineConfig({
             { text: 'podman 踩坑', link: 'podman-compose' },
             { text: 'spring boot 管理依赖', link: 'spring-boot-parent' },
             { text: 'Linux下坚果云界面空白', link: 'nutstore-empty'},
-            { text: '买台arm电脑', link: 'buy-a-arm-device'}
+            { text: '买台arm电脑', link: 'buy-a-arm-device'},
+            { text: 'archlinux 下使用 firewalld', link: 'archlinux-firewalld'},
           ],
         },
       ],
